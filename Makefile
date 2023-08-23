@@ -1278,10 +1278,7 @@ keystone_kuttl: kuttl_db_prep keystone keystone_deploy_prep ## runs kuttl tests 
 	$(eval $(call vars,$@,keystone))
 	make wait
 	make keystone_kuttl_run
-	make deploy_cleanup
-	make keystone_cleanup
-	make kuttl_db_cleanup
-	bash scripts/restore-namespace.sh
+	exit 1
 
 .PHONY: placement_kuttl_run
 placement_kuttl_run: ## runs kuttl tests for the placement operator, assumes that everything needed for running the test was deployed beforehand.
